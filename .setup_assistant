@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: rr1_description
+    relative_path: urdf/rr1.urdf
+    xacro_args: ""
+  SRDF:
+    relative_path: config/robot_name.srdf
+  CONFIG:
+    author_name: Jan Chudy
+    author_email: chudyja1@fit.cvut.cz
+    generated_timestamp: 1678279463
