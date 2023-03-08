@@ -1,0 +1,15 @@
+controller_names:
+  - rr1_manipulator_controller
+
+rr1_manipulator_controller:
+  action_ns: joint_trajectory_controller
+  type: JointTrajectoryController
+  # type: joint_trajectory_controller/JointTrajectoryController
+  default: true
+  joints:
+    - shoulder_joint
+    - upper_arm_joint
+    - elbow_joint
+    - forearm_joint
+    - wrist_joint
+    - hand_joint
