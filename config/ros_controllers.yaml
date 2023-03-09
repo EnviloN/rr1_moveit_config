@@ -1,41 +1,54 @@
-rr1_manipulator_controller:
-  type: joint_trajectory_controller/JointTrajectoryController
-  # type: /joint_trajectory_controller/joint_trajectory
-  joints:
-    - shoulder_joint
-    - upper_arm_joint
-    - elbow_joint
-    - forearm_joint
-    - wrist_joint
-    - hand_joint
-  gains:
-    shoulder_joint:
-      p: 100
-      d: 1
-      i: 1
-      i_clamp: 1
-    upper_arm_joint:
-      p: 100
-      d: 1
-      i: 1
-      i_clamp: 1
-    elbow_joint:
-      p: 100
-      d: 1
-      i: 1
-      i_clamp: 1
-    forearm_joint:
-      p: 100
-      d: 1
-      i: 1
-      i_clamp: 1
-    wrist_joint:
-      p: 100
-      d: 1
-      i: 1
-      i_clamp: 1
-    hand_joint:
-      p: 100
-      d: 1
-      i: 1
-      i_clamp: 1
+# Controller manager configuration
+controller_manager:
+  ros__parameters:
+    update_rate: 50  # Hz
+
+    ### Controllers available
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    forward_position_controller:
+      type: forward_command_controller/ForwardCommandController
+
+    joint_trajectory_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+
+### Properties of the controllers that the robot uses ###
+forward_position_controller:
+  ros__parameters:
+    joints:
+      - shoulder_joint
+      - upper_arm_joint
+      - elbow_joint
+      - forearm_joint
+      - wrist_joint
+      - hand_joint
+    interface_name: position
+
+
+joint_trajectory_controller:
+  ros__parameters:
+    joints:
+      - shoulder_joint
+      - upper_arm_joint
+      - elbow_joint
+      - forearm_joint
+      - wrist_joint
+      - hand_joint
+
+    command_interfaces:
+      - position
+
+    state_interfaces:
+      - position
+
+    state_publish_rate: 200.0 # Defaults to 50
+    action_monitor_rate: 20.0 # Defaults to 20
+
+    allow_partial_joints_goal: false # Defaults to false
+    open_loop_control: true
+    allow_integration_in_goal_trajectories: true
+    constraints:
+      stopped_velocity_tolerance: 0.01 # Defaults to 0.01
+      goal_time: 0.0 # Defaults to 0.0 (start immediately)

@@ -1,0 +1,41 @@
+rr1_manipulator_controller:
+  type: joint_trajectory_controller/JointTrajectoryController
+  # type: /joint_trajectory_controller/joint_trajectory
+  joints:
+    - shoulder_joint
+    - upper_arm_joint
+    - elbow_joint
+    - forearm_joint
+    - wrist_joint
+    - hand_joint
+  gains:
+    shoulder_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    upper_arm_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    elbow_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    forearm_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    wrist_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    hand_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
